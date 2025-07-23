@@ -8,14 +8,13 @@
   }
 }
 
-/* Fallback or default values for light mode */
 :root {
   --background: #ffffff;
   --foreground: #000000;
 }
 
 body {
-  background: var(--background);
+  background: linear-gradient(180deg, #ebf2fc 0%, #eef8f9 100%);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
