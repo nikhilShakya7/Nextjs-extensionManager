@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import React from "react";
+import { GoArrowDownRight } from "react-icons/go";
 
 const Main = () => {
   return (
@@ -48,6 +49,12 @@ const Main = () => {
         >
           Experienced & Reliable Remodelers since 1968
         </motion.h2>
+        <button className="group relative bg-black text-white px-8 py-4 mt-10 rounded-md font-4xl overflow-hidden transition-all duration-300 hover:bg-[#847539] hover:cursor-pointer">
+          <span className="flex items-center justify-center gap-2 font-medium ">
+            Learn More
+            <GoArrowDownRight className="transition-all duration-300 group-hover:rotate-315" />
+          </span>
+        </button>
       </div>
     </div>
   );

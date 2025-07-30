@@ -11,7 +11,7 @@ const Services = () => {
       desc: "Describe the service and how customers or clients can benefit from it. It’s an opportunity to add a short description with relevant details, like pricing, duration and how to book.",
     },
     {
-      img: "images/Bathroom.jpg",
+      img: "images/bathroom.jpg",
       title: "Bathroom Remodeling",
       desc: "Describe the service and how customers or clients can benefit from it. It’s an opportunity to add a short description with relevant details, like pricing, duration and how to book.",
     },
