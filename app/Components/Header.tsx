@@ -1,10 +1,19 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { GoArrowDownRight } from "react-icons/go";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeLink, setActiveLink] = useState(null);
+
+  const navLinks = [
+    { name: "Services", href: "/#services" },
+    { name: "Projects", href: "/#projects" },
+    { name: "About Us", href: "/#about" },
+    { name: "Contact", href: "#contact" },
+  ];
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -14,84 +23,154 @@ const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div className="font-sans w-full">
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? "bg-black/95 backdrop-blur-lg shadow-lg border-b border-gray-800"
-            : "bg-black"
-        }`}
-      >
-        <div className="max-w-6xl mx-auto">
-          <div className="flex justify-between items-center py-3 px-6">
-            {" "}
-            <div className="flex items-center justify-between w-full md:w-auto">
-              <div className="relative group">
-                <h1 className="m-0 text-white text-xl md:text-2xl font-bold tracking-wide cursor-pointer transition-all duration-300 group-hover:bg-clip-text">
-                  {" "}
-                  Renovyte.
-                </h1>
-                <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#847539] transition-all duration-300 group-hover:w-full"></div>
-              </div>
-
-              <button
-                className="md:hidden focus:outline-none relative z-10 p-2 rounded-lg transition-all duration-300 hover:bg-gray-800"
-                onClick={toggleMenu}
-                aria-label="Toggle menu"
-              >
-                <div className="w-5 h-5 relative">
-                  {" "}
-                  <span
-                    className={`absolute block w-5 h-0.5 bg-white transition-all duration-300 ${
-                      isMenuOpen ? "rotate-45 top-2.5" : "top-0.5"
-                    }`}
-                  ></span>
-                  <span
-                    className={`absolute block w-5 h-0.5 bg-white transition-all duration-300 top-2.5 ${
-                      isMenuOpen ? "opacity-0" : "opacity-100"
-                    }`}
-                  ></span>
-                  <span
-                    className={`absolute block w-5 h-0.5 bg-white transition-all duration-300 ${
-                      isMenuOpen ? "-rotate-45 top-2.5" : "top-4.5"
-                    }`}
-                  ></span>
-                </div>
-              </button>
-            </div>
-            <nav
-              className={`${
-                isMenuOpen ? "block" : "hidden"
-              } absolute md:relative top-full md:top-auto left-0 md:left-auto w-full md:w-auto bg-black/95 md:bg-transparent backdrop-blur-lg md:backdrop-blur-none border-t md:border-t-0 border-gray-800 md:block`}
+    <header
+      className={`fixed left-0 w-full z-50 transition-all duration-300 ${
+        isScrolled
+          ? "bg-white/90 backdrop-blur-md shadow-sm py-2"
+          : "bg-transparent py-4"
+      }`}
+    >
+      <div className="flex items-center justify-between px-4 sm:px-6 lg:px-12 max-w-[1440px] mx-auto">
+        <motion.div
+          className="flex items-center gap-4 sm:gap-10"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <a href="/" className="flex items-center">
+            <motion.h1
+              className={`text-2xl font-bold ${
+                isScrolled ? "text-black" : "text-white"
+              }`}
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
             >
-              <ul className="flex flex-col md:flex-row list-none m-0 p-4 md:p-0 gap-2 md:gap-6">
-                {" "}
-                {["Service", "Product", "About Us"].map((item, index) => (
-                  <li key={item} className="relative group">
-                    <a
-                      href="#"
-                      className="block cursor-pointer text-white font-medium py-2 md:py-1 px-4 md:px-0 rounded-lg md:rounded-none transition-all duration-300 hover:bg-clip-text md:hover:bg-none md:hover:bg-transparent relative overflow-hidden"
-                      style={{ animationDelay: `${index * 0.1}s` }}
-                    >
-                      {item}
-                      <span className="hidden md:block absolute bottom-0 left-0 w-0 h-0.5 bg-[#847539] transition-all duration-300 group-hover:w-full"></span>
-                      <span className="md:hidden absolute inset-0 bg-[#847539] rounded-lg opacity-0 transition-opacity duration-300 group-hover:opacity-100 -z-10"></span>
-                    </a>
-                  </li>
-                ))}{" "}
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </header>
+              Renovyte.
+            </motion.h1>
+          </a>
 
-      <div className="h-16"></div>
-    </div>
+          {/* Desktop Nav */}
+          <nav className="hidden sm:flex ml-auto gap-4 md:gap-6 lg:gap-8">
+            {navLinks.map((link, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <a
+                  href={link.href}
+                  className={`relative text-sm md:text-base capitalize transition-colors duration-200 px-1 py-2 ${
+                    activeLink === link.href.substring(1)
+                      ? "text-[#847539] font-semibold"
+                      : isScrolled
+                      ? "text-gray-700 hover:text-[#847539]"
+                      : "text-white hover:text-amber-200"
+                  }`}
+                >
+                  {link.name}
+                  {activeLink === link.href.substring(1) && (
+                    <motion.span
+                      layoutId="activeLink"
+                      className="absolute bottom-0 left-0 w-full h-0.5 bg-[#847539]"
+                    />
+                  )}
+                </a>
+              </motion.div>
+            ))}
+          </nav>
+        </motion.div>
+
+        {/* Desktop Button */}
+        <motion.div
+          className="hidden sm:block"
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <motion.button
+            className="bg-gradient-to-r from-[#847539] to-amber-700 text-white font-semibold text-sm tracking-wide rounded-full px-6 py-2 hover:shadow-lg transition-all duration-300"
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0 5px 15px rgba(132, 117, 57, 0.4)",
+            }}
+            whileTap={{ scale: 0.95 }}
+          >
+            GET A QUOTE
+          </motion.button>
+        </motion.div>
+
+        {/* Mobile Menu Toggle */}
+        <motion.button
+          className="sm:hidden focus:outline-none z-50"
+          onClick={toggleMenu}
+          whileTap={{ scale: 0.9 }}
+        >
+          {isMenuOpen ? (
+            <FaTimes
+              size={24}
+              className={isScrolled ? "text-gray-800" : "text-white"}
+            />
+          ) : (
+            <FaBars
+              size={24}
+              className={isScrolled ? "text-gray-800" : "text-white"}
+            />
+          )}
+        </motion.button>
+      </div>
+
+      {/* Mobile Menu Dropdown */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="sm:hidden fixed top-20 left-0 right-0 bg-white shadow-lg z-40"
+          >
+            <nav className="flex flex-col p-4">
+              {navLinks.map((link, i) => (
+                <motion.a
+                  key={i}
+                  href={link.href}
+                  className={`py-3 px-4 font-medium text-base hover:bg-amber-50 rounded-lg transition-colors duration-200 ${
+                    activeLink === link.href.substring(1)
+                      ? "text-[#847539] bg-amber-50"
+                      : "text-gray-700"
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                >
+                  {link.name}
+                </motion.a>
+              ))}
+              <motion.div
+                className="mt-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: navLinks.length * 0.1 }}
+              >
+                <motion.button
+                  className="w-full bg-gradient-to-r from-[#847539] to-amber-700 text-white font-semibold rounded-full px-4 py-3 hover:shadow-md transition-all duration-300"
+                  whileTap={{ scale: 0.95 }}
+                >
+                  GET A QUOTE
+                </motion.button>
+              </motion.div>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
   );
 };
 
