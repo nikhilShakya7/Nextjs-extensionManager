@@ -25,9 +25,9 @@ const UsInNumber = () => {
   };
 
   return (
-    <div className="bg-[#D6CEAD] relative pt-20 pb-20 px-6 md:px-12 lg:px-24 text-black">
+    <div className="bg-[#D6CEAD] relative pt-20 pb-20 px-6 md:px-12 lg:px-16 text-black">
       <motion.div
-        className="px-10  mx-auto grid grid-cols-1 md:grid-cols-3 gap-8"
+        className="  mx-auto grid grid-cols-1 md:grid-cols-3 gap-8"
         variants={container}
         initial="hidden"
         whileInView="show"
