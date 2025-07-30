@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { GoArrowDownRight } from "react-icons/go";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -82,15 +83,7 @@ const Header = () => {
                       <span className="md:hidden absolute inset-0 bg-[#847539] rounded-lg opacity-0 transition-opacity duration-300 group-hover:opacity-100 -z-10"></span>
                     </a>
                   </li>
-                ))}
-                <li className="mt-2 md:mt-0 md:ml-4">
-                  {" "}
-                  <button className="w-full md:w-auto bg-[#847539] text-white font-semibold py-2 px-4 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 hover:scale-105 transform relative overflow-hidden group text-sm">
-                    {" "}
-                    <span className="relative z-10">Get Started</span>
-                    <div className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 cursor:pointer"></div>
-                  </button>
-                </li>
+                ))}{" "}
               </ul>
             </nav>
           </div>
