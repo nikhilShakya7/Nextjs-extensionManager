@@ -35,7 +35,7 @@ const Project = () => {
   }, [projects.length]);
 
   return (
-    <div className="px-6 md:px-12 lg:px-10 py-20 max-w-7xl mx-auto">
+    <div className="px-6 md:px-12 lg:px-10 py-20  mx-auto">
       <motion.h1
         className="text-sm font-bold text-[#555] uppercase tracking-wider"
         initial={{ opacity: 0, y: 20 }}

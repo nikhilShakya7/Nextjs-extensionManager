@@ -23,13 +23,17 @@ const About = () => {
     hidden: { opacity: 0, x: 50 },
     visible: { opacity: 1, x: 0 },
   };
+  const item = {
+    hidden: { opacity: 0, y: 50 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+  };
 
   return (
     <div
       ref={ref}
-      className="bg-[#FFFEED] relative pt-20 pb-20 px-6 md:px-12 lg:px-24 text-black"
+      className="bg-[#FFFEED] relative pt-20 pb-20 px-6 md:px-12 lg:px-16 text-black"
     >
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
+      <div className="mx-auto flex flex-col lg:flex-row items-center gap-12">
         {/* Text Content */}
         <motion.div
           className="lg:w-1/2"

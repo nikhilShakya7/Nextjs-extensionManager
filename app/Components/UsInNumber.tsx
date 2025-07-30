@@ -14,7 +14,7 @@ const UsInNumber = () => {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2, // Delay between each child animation
+        staggerChildren: 0.2,
       },
     },
   };
@@ -27,7 +27,7 @@ const UsInNumber = () => {
   return (
     <div className="bg-[#D6CEAD] relative pt-20 pb-20 px-6 md:px-12 lg:px-24 text-black">
       <motion.div
-        className="px-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8"
+        className="px-10  mx-auto grid grid-cols-1 md:grid-cols-3 gap-8"
         variants={container}
         initial="hidden"
         whileInView="show"

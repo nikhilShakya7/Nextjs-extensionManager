@@ -4,6 +4,7 @@ import Main from "./Components/Main";
 import About from "./Components/About";
 import UsInNumber from "./Components/UsInNumber";
 import Project from "./Components/Project";
+import Services from "./Components/Services";
 
 const Page = () => {
   return (
@@ -13,6 +14,7 @@ const Page = () => {
         <About />
         <UsInNumber />
         <Project />
+        <Services />
       </div>
     </div>
   );
