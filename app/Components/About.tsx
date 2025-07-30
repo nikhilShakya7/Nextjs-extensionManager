@@ -38,7 +38,7 @@ const About = () => {
           animate={controls}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <h1 className="text-sm font-bold mb-2 text-[#555] uppercase">
+          <h1 className="text-sm font-bold  text-[#555] uppercase">
             ABOUT OUR COMPANY
           </h1>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-light mb-6">
