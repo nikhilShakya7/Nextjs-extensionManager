@@ -36,7 +36,7 @@ const UsInNumber = () => {
         {stats.map((stat, index) => (
           <motion.div
             key={index}
-            className="bg-[#2B2613] text-[#FAF8E4] rounded-xl flex flex-col justify-center items-center py-16 px-6"
+            className="bg-[#2B2613] text-[#FAF8E4] rounded-xl flex flex-col justify-center items-center py-16 px-6 mt-10"
             variants={item}
             whileHover={{
               y: -10,

@@ -41,7 +41,7 @@ const About = () => {
           <h1 className="text-sm font-bold  text-[#555] uppercase">
             ABOUT OUR COMPANY
           </h1>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-light mb-6">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl mt-6 font-light mb-6">
             We provide professional solutions to deliver safe & efficient
             projects
           </h1>
